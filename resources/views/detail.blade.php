@@ -12,6 +12,7 @@
                     <a title="Udostępnianie strony na Facebook" class="btn btn-primary"
                         href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank"
                         aria-label="Przycisk udostępniania na Facebook">Udostępnij na FB
+                        test
                     </a>
                 </div>
             </div>
