@@ -23,7 +23,7 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->date }}</td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="btn-group" role="group" aria-label="Grupa przycisków z opcjami">
                                 <a href="{{ route('admin.posts.edit', $post->id) }}" type="button" class="btn btn-success">Edytuj</a>
                                 <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post"
                                     accept-charset="utf-8">
