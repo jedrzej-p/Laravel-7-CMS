@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="contentInput">Zawartość</label>
-                    <input id="contentInput" name="content" type="text" class="form-control" placeholder="Zawartość posta">
+                    <textarea id="contentInput" name="content" type="text" class="form-control" placeholder="Zawartość posta"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="Data"></label>
