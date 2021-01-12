@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if (Session::has('flash_message'))
+    <div class="col-12 mx-auto px-0">
+        <div class="alert alert-success">{{ Session::get('flash_message')}}</div>
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-12 mb-2">
             <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Dodaj post</a>

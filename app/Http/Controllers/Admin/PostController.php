@@ -47,6 +47,16 @@ class PostController extends Controller
         return view('admin.post.edit')->with(['post' => $post]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $post = Post::where('id', $id)->first();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->date = $request->date;
+        $post->save();
+        return redirect()->route('admin.posts.index')->with('flash_message', 'Zaktualizowano post.');
+    }
+
     public function index()
     {
         $posts = Post::with('users')->orderBy('date','desc')->get();
