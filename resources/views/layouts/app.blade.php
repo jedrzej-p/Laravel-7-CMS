@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a class="nav-link" href="{{ route('contact.index') }}">Kontakt</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -47,6 +47,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.categories.index') }}">Kategorie</a>
                                     <a class="dropdown-item" href="{{ route('admin.posts.index') }}">Posty</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -65,6 +66,11 @@
         </nav>
 
         <main class="py-3">
+            @if (Session::has('flash_message'))
+            <div class="container mx-auto px-3">
+                <div class="alert alert-success">{{ Session::get('flash_message')}}</div>
+            </div>
+            @endif
             @yield('content')
         </main>
     </div>

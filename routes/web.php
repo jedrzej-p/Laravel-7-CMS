@@ -34,3 +34,6 @@ Route::resource('/admin/categories', 'Admin\CategoryController', ['except' => ['
     'update'  => 'admin.categories.update',
     'destroy' => 'admin.categories.destroy'
 ]], ['except' => ['show']])->middleware(['auth']);
+
+Route::get('/formularz_kontaktowy', 'Contact\ContactController@index')->name('contact.index');
+Route::post('/formularz_kontaktowy', 'Contact\ContactController@store')->name('contact.store');
