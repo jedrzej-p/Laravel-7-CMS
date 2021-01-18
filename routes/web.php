@@ -25,3 +25,12 @@ Route::resource('/admin/posts', 'Admin\PostController', ['except' => ['show'], '
     'update'  => 'admin.posts.update',
     'destroy' => 'admin.posts.destroy'
 ]], ['except' => ['show']])->middleware(['auth']);
+
+Route::resource('/admin/categories', 'Admin\CategoryController', ['except' => ['show'], 'names' => [
+    'index'   => 'admin.categories.index',
+    'create'  => 'admin.categories.create',
+    'store'   => 'admin.categories.store',
+    'edit'    => 'admin.categories.edit',
+    'update'  => 'admin.categories.update',
+    'destroy' => 'admin.categories.destroy'
+]], ['except' => ['show']])->middleware(['auth']);
