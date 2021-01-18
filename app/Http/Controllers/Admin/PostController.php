@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\PostGroup;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -26,16 +27,18 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        $categories = PostGroup::get();
+        return view('admin.post.create')->with(['categories' => $categories]);
     }
 
     public function store(Request $request)
     {
         $post = new Post;
-        $post->author_id = Auth::user()->id;
-        $post->title    = $request->title;
-        $post->content  = $request->content;
-        $post->date     = $request->date;
+        $post->author_id    = Auth::user()->id;
+        $post->title        = $request->title;
+        $post->content      = $request->content;
+        $post->date         = $request->date;
+        $post->group_id     = $request->category_id;
         $post->save();
 
         return redirect()->route('admin.posts.index')->with('flash_message', 'Post został dodany pomyślnie.');
@@ -44,22 +47,24 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::where('id',$id)->first();
-        return view('admin.post.edit')->with(['post' => $post]);
+        $categories = PostGroup::get();
+        return view('admin.post.edit')->with(['post' => $post, 'categories' => $categories]);
     }
 
     public function update(Request $request, $id)
     {
         $post = Post::where('id', $id)->first();
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->date = $request->date;
+        $post->title    = $request->title;
+        $post->content  = $request->content;
+        $post->date     = $request->date;
+        $post->group_id = $request->category_id;
         $post->save();
         return redirect()->route('admin.posts.index')->with('flash_message', 'Zaktualizowano post.');
     }
 
     public function index()
     {
-        $posts = Post::with('users')->orderBy('date','desc')->get();
+        $posts = Post::with('users','category')->orderBy('date','desc')->get();
         return view('admin.post.index')->with(['posts' => $posts]);
     }
 

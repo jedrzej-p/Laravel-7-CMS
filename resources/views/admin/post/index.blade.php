@@ -11,12 +11,13 @@
         <div class="col-12 mb-2">
             <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Dodaj post</a>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive px-3">
             <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Post</th>
+                        <th>Kategoria</th>
                         <th>Data</th>
                         <th>Opcje</th>
                     </tr>
@@ -26,6 +27,7 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
+                        <td>{{ $post->category->name}}</td>
                         <td>{{ $post->date }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Grupa przycisków z opcjami">
