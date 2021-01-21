@@ -35,5 +35,9 @@ Route::resource('/admin/categories', 'Admin\CategoryController', ['except' => ['
     'destroy' => 'admin.categories.destroy'
 ]], ['except' => ['show']])->middleware(['auth']);
 
+Route::get('/admin/user/edit', 'Admin\UserController@edit')->name('admin.user.edit');
+Route::post('/admin/user/change_profile', 'Admin\UserController@updateEmailName')->name('admin.user.updateprofile');
+Route::post('/admin/user/change_password', 'Admin\UserController@changePassword')->name('admin.user.password');
+
 Route::get('/formularz_kontaktowy', 'Contact\ContactController@index')->name('contact.index');
 Route::post('/formularz_kontaktowy', 'Contact\ContactController@store')->name('contact.store');
