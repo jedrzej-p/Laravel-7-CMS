@@ -28,7 +28,7 @@ class ContactController extends Controller
             $adres= $request->email;
             $mail->from($adres);
             $temat='Nowa wiadomość z formularza kontaktowego Laravel CMS';
-            $odbiorca = 'admin@cms.com';
+            $odbiorca = config('mail.mailers.smtp.username');
             $mail->to($odbiorca)->subject($temat);
         });
 
